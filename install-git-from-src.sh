@@ -6,7 +6,8 @@ GIT_URL="https://github.com/git/git/archive/${GIT_FILE}"
 
 
 function do_checkenv {
-    sudo apt-get install -y autoconf automake zlib1g-dev asciidoc
+    sudo apt-get install -y autoconf automake zlib1g-dev asciidoc \
+	 libcurl4-openssl-dev
 }
 
 function do_clean {
