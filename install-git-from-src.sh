@@ -3,7 +3,7 @@
 GIT_VERSION="2.7.0"
 GIT_FILE="v${GIT_VERSION}.zip"
 GIT_URL="https://github.com/git/git/archive/${GIT_FILE}"
-
+JNUM=2
 
 function do_checkenv {
     sudo apt-get install -y autoconf automake zlib1g-dev asciidoc \
@@ -38,7 +38,7 @@ function do_build {
     fi
 
     ./configure --prefix=/usr
-    make all doc
+    make all doc -j $JNUM
     sudo make install install-doc
 }
 
