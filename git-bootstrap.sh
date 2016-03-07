@@ -7,7 +7,7 @@ JNUM=2
 
 function do_checkenv {
     sudo apt-get install -y autoconf automake zlib1g-dev asciidoc \
-	 libcurl4-openssl-dev
+	 libcurl4-openssl-dev gettext
 }
 
 function do_clean {
