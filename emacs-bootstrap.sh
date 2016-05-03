@@ -7,7 +7,7 @@ CONFIGURE_OPTIONS="--without-toolkit-scroll-bars \
 JNUM="4"
 
 function do_checkenv {
-    sudo apt-get -y build-dep emacs
+    sudo apt-get -y build-dep emacs24
     sudo apt-get install -y libncurses5-dev
 }
 
