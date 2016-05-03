@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GIT_VERSION="2.7.2"
+GIT_VERSION="2.8.2"
 GIT_FILE="v${GIT_VERSION}.zip"
 GIT_URL="https://github.com/git/git/archive/${GIT_FILE}"
 JNUM=2
