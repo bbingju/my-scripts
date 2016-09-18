@@ -1,8 +1,8 @@
 #!/bin/bash
 
-GIT_VERSION="2.9.1"
+GIT_VERSION="2.10.0"
 GIT_FILE="v${GIT_VERSION}.zip"
-GIT_URL="https://github.com/git/git/archive/${GIT_FILE}"
+SRC_URI="https://github.com/git/git/archive/${GIT_FILE}"
 JNUM=2
 
 function do_checkenv {
@@ -18,7 +18,7 @@ function do_clean {
 function do_fetch {
 
     if [[ ! -f ${GIT_FILE} ]]; then
-	wget $GIT_URL
+	wget $SRC_URI
     fi
 
     if command -v unzip 2> /dev/null; then
