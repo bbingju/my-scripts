@@ -1,7 +1,7 @@
 #!/bin/bash
 
-VERSION="24.5"
-SRC_URL=http://ftp.gnu.org/gnu/emacs/emacs-"${VERSION}".tar.xz
+VERSION="25.1"
+SRC_URI=http://ftpmirror.gnu.org/emacs/emacs-"${VERSION}".tar.xz
 CONFIGURE_OPTIONS="--without-toolkit-scroll-bars \
 "
 JNUM="4"
@@ -13,7 +13,7 @@ function do_checkenv {
 
 function do_fetch {
     if [[ ! -d emacs-"$VERSION" ]]; then
-	wget $SRC_URL
+	wget $SRC_URI
 	tar xvf emacs-"$VERSION".tar.xz
     fi
 }
