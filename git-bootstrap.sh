@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GIT_VERSION="2.10.0"
+GIT_VERSION="2.11.0"
 GIT_FILE="v${GIT_VERSION}.zip"
 SRC_URI="https://github.com/git/git/archive/${GIT_FILE}"
 JNUM=2
