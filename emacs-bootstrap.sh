@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="25.1"
+VERSION="25.2"
 SRC_URI=http://ftpmirror.gnu.org/emacs/emacs-"${VERSION}".tar.xz
 CONFIGURE_OPTIONS="--without-toolkit-scroll-bars \
 "
