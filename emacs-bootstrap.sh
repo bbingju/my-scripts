@@ -1,15 +1,8 @@
 #!/bin/bash
 
 VERSION="25.3"
-SRC_URI=http://ftpmirror.gnu.org/emacs/emacs-"${VERSION}".tar.xz
-CONFIGURE_OPTIONS="--without-toolkit-scroll-bars \
-"
-JNUM="4"
-
-#!/bin/bash
-
-VERSION="25.3"
-SRC_URI=http://ftpmirror.gnu.org/emacs/emacs-"${VERSION}".tar.xz
+FILENAME="emacs-${VERSION}.tar.xz"
+SRC_URI=http://ftpmirror.gnu.org/emacs/"${FILENAME}"
 CONFIGURE_OPTIONS="--without-toolkit-scroll-bars \
 "
 JNUM="4"
@@ -20,51 +13,11 @@ function do_checkenv {
 }
 
 function do_fetch {
-    if [[ ! -d emacs-"$VERSION" ]]; then
+    if [[ ! -f $FILENAME ]]; then
 	wget $SRC_URI
-	tar xvf emacs-"$VERSION".tar.xz
-    fi
-}
-
-function do_configure {
-    if [[ ! -f ./configure ]]; then
-	exit "the configure is not found."
     fi
 
-    ./configure $CONFIGURE_OPTIONS
-}
-
-function do_build {
-    if [[ ! -f Makefile ]]; then
-	exit "Makefile is not found."
-    fi
-
-    make -j $JNUM
-}
-
-function do_install {
-    sudo make install
-}
-
-set -e
-
-do_checkenv
-do_fetch
-cd emacs-"${VERSION}"
-do_configure
-do_build
-do_install
-
-function do_checkenv {
-    sudo apt-get -y build-dep emacs24
-    sudo apt-get install -y libncurses5-dev
-}
-
-function do_fetch {
-    if [[ ! -d emacs-"$VERSION" ]]; then
-	wget $SRC_URI
-	tar xvf emacs-"$VERSION".tar.xz
-    fi
+    tar xvf $FILENAME
 }
 
 function do_configure {
