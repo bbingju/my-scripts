@@ -37,7 +37,7 @@ function do_build {
 	exit "the configure is not found."
     fi
 
-    ./configure --prefix=/usr
+    ./configure --prefix=$HOME/local
     make all doc -j $JNUM
     sudo make install install-doc
 }
