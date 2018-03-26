@@ -39,7 +39,7 @@ function do_build {
 
     ./configure --prefix=$HOME/local
     make all doc -j $JNUM
-    sudo make install install-doc
+    make install install-doc
 }
 
 set -e
