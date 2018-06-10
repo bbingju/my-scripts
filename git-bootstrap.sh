@@ -3,6 +3,9 @@
 GIT_VERSION="2.17.1"
 GIT_FILE="v${GIT_VERSION}.zip"
 SRC_URI="https://github.com/git/git/archive/${GIT_FILE}"
+CONFIGURE_OPTIONS=" \
+		    --prefix=${HOME}/.local \
+"
 JNUM=2
 
 function do_checkenv {
@@ -37,7 +40,7 @@ function do_build {
 	exit "the configure is not found."
     fi
 
-    ./configure --prefix=$HOME/local
+    ./configure $CONFIGURE_OPTIONS
     make all doc -j $JNUM
     make install install-doc
 }
