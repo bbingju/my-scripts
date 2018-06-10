@@ -45,4 +45,6 @@ function do_build {
 set -e
 
 do_checkenv
-do_clean && do_fetch && do_build
+do_clean
+do_fetch
+do_build
