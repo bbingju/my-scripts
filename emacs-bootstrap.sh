@@ -3,13 +3,25 @@
 VERSION="26.1"
 FILENAME="emacs-${VERSION}.tar.xz"
 SRC_URI=http://ftpmirror.gnu.org/emacs/"${FILENAME}"
-CONFIGURE_OPTIONS="--without-toolkit-scroll-bars \
-"
 JNUM="4"
 
+#--without-toolkit-scroll-bars
+CONFIGURE_OPTIONS="
+	--prefix=${HOME}/.local \
+	--with-x-toolkit=gtk3 \
+"
+
+DEP_PACKAGES=" \
+libgtk-3-dev \
+libmagickcore-dev \
+libxpm-dev \
+libgif-dev \
+libgnutls28-dev \
+libncurses5-dev
+"
+
 function do_checkenv {
-    sudo apt-get -y build-dep emacs24
-    sudo apt-get install -y libncurses5-dev
+    sudo apt-get install -y build-essential $DEP_PACKAGES
 }
 
 function do_fetch {
