@@ -49,7 +49,7 @@ function do_build {
 }
 
 function do_install {
-    sudo make install
+    make install
 }
 
 set -e
