@@ -1,0 +1,45 @@
+#!/bin/bash
+
+function get_lsb_version() {
+    unset IFS
+    local _str=(`lsb_release -r`)
+    echo ${_str[1]}
+}
+
+function get_lsb_version_major() {
+    unset IFS
+    local _ver=$(get_lsb_version)
+    IFS='.'; local _arr=($_ver)
+    echo ${_arr[0]}
+}
+
+function get_lsb_version_minor() {
+    unset IFS
+    local _ver=$(get_lsb_version)
+    IFS="."; local _arr=($_ver)
+    echo ${_arr[1]}
+}
+
+function get_lsb_codename() {
+    unset IFS
+    local _str=(`lsb_release -c`)
+    local _codename=(${_str[1]})
+    echo $_codename
+}
+
+set -e
+
+pkglist_fn="pkglist-$(get_lsb_codename)"
+
+if [ ! -f ./${pkglist_fn} ]; then
+    echo "error: can not find the pkglist file."
+    exit -1
+fi
+
+source ./${pkglist_fn}
+
+sudo apt-get install -y ${pkgs_to_install[@]}
+
+source ./git-bootstrap.sh
+source ./emacs-bootstrap.sh
+source ./global-bootstrap.sh

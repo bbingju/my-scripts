@@ -1,0 +1,7 @@
+#!/bin/bash
+
+pkgs_to_install=(build-essential \
+		     libgnutls-dev \
+		     silversearcher-ag \
+		     libncurses5-dev \
+		)
