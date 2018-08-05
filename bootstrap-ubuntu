@@ -40,6 +40,6 @@ source ./${pkglist_fn}
 
 sudo apt-get install -y ${pkgs_to_install[@]}
 
-source ./git-bootstrap.sh
-source ./emacs-bootstrap.sh
-source ./global-bootstrap.sh
+# source ./git-bootstrap.sh
+# source ./emacs-bootstrap.sh
+# source ./global-bootstrap.sh
