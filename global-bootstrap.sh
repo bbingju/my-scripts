@@ -5,6 +5,8 @@ VERSION="6.6.2"
 SRC_FILE="${PROGRAM_NAME}-${VERSION}.tar.gz"
 SRC_URL="ftp://ftp.gnu.org/pub/gnu/global/${SRC_FILE}"
 CONFIGURE_OPTIONS=" \
+--prefix=${HOME}/.local \
+--with-exuberant-ctags=/usr/bin/ctags \
 "
 JNUM="2"
 
@@ -36,7 +38,7 @@ function do_build {
 }
 
 function do_install {
-    sudo make install
+    make install
 }
 
 set -e
