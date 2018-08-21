@@ -29,6 +29,10 @@ function get_lsb_codename() {
 
 set -e
 
+echo "export TERM=xterm-256color" >> ~/.bashrc
+
+sudo sed 's/us.archive.ubuntu.com/mirror.kakao.com/' -i /etc/apt/sources.list
+
 pkglist_fn="pkglist-$(get_lsb_codename)"
 
 if [ ! -f ./${pkglist_fn} ]; then
