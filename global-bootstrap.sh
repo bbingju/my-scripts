@@ -11,7 +11,7 @@ CONFIGURE_OPTIONS=" \
 JNUM="2"
 
 function do_checkenv {
-    sudo apt-get install -y build-essential
+    sudo apt-get install -y build-essential ctags
 }
 
 function do_fetch {
@@ -43,9 +43,19 @@ function do_install {
 
 set -e
 
-do_checkenv
+# do_checkenv
 do_fetch
 cd "${PROGRAM_NAME}-${VERSION}"
 do_configure
 do_build
 do_install
+
+cd ..
+git clone https://github.com/yoshizow/global-pygments-plugin.git
+cd global-pygments-plugin/
+sh reconf.sh
+do_configure
+do_build
+do_install
+cp sample.globalrc $HOME/.globalrc
+
