@@ -2,6 +2,7 @@
 
 pkgs_to_install=(build-essential \
 		     libgnutls-dev \
+		     exuberant-ctags \
 		     silversearcher-ag \
 		     libncurses5-dev \
 		)

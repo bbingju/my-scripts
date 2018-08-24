@@ -5,11 +5,13 @@ VERSION="6.6.2"
 SRC_FILE="${PROGRAM_NAME}-${VERSION}.tar.gz"
 SRC_URL="ftp://ftp.gnu.org/pub/gnu/global/${SRC_FILE}"
 CONFIGURE_OPTIONS=" \
+--prefix=${HOME}/.local \
+--with-exuberant-ctags=/usr/bin/ctags \
 "
 JNUM="2"
 
 function do_checkenv {
-    sudo apt-get install -y build-essential
+    sudo apt-get install -y build-essential ctags
 }
 
 function do_fetch {
@@ -36,14 +38,24 @@ function do_build {
 }
 
 function do_install {
-    sudo make install
+    make install
 }
 
 set -e
 
-do_checkenv
+# do_checkenv
 do_fetch
-cd "${PROGRAM_NAME}-${VERSION}"
+pushd "${PROGRAM_NAME}-${VERSION}"
 do_configure
 do_build
 do_install
+popd
+
+git clone https://github.com/yoshizow/global-pygments-plugin.git
+pushd global-pygments-plugin/
+sh reconf.sh
+do_configure
+do_build
+do_install
+cp sample.globalrc $HOME/.globalrc
+popd
