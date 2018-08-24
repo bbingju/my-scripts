@@ -45,17 +45,17 @@ set -e
 
 # do_checkenv
 do_fetch
-cd "${PROGRAM_NAME}-${VERSION}"
+pushd "${PROGRAM_NAME}-${VERSION}"
 do_configure
 do_build
 do_install
+popd
 
-cd ..
 git clone https://github.com/yoshizow/global-pygments-plugin.git
-cd global-pygments-plugin/
+pushd global-pygments-plugin/
 sh reconf.sh
 do_configure
 do_build
 do_install
 cp sample.globalrc $HOME/.globalrc
-
+popd

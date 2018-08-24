@@ -56,7 +56,8 @@ set -e
 
 do_checkenv
 do_fetch
-cd emacs-"${VERSION}"
+pushd emacs-"${VERSION}"
 do_configure
 do_build
 do_install
+popd

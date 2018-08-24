@@ -33,7 +33,8 @@ function do_fetch {
 }
 
 function do_build {
-    cd git-${GIT_VERSION}
+    pushd git-${GIT_VERSION}
+
     make configure
 
     if [[ ! -f ./configure ]]; then
@@ -43,6 +44,8 @@ function do_build {
     ./configure $CONFIGURE_OPTIONS
     make all doc -j $JNUM
     make install install-doc
+
+    popd
 }
 
 set -e
