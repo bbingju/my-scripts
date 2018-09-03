@@ -32,6 +32,7 @@ set -e
 echo "export TERM=xterm-256color" >> ~/.bashrc
 
 sudo sed 's/us.archive.ubuntu.com/mirror.kakao.com/' -i /etc/apt/sources.list
+sudo apt update
 
 pkglist_fn="pkglist-$(get_lsb_codename)"
 
@@ -44,6 +45,6 @@ source ./${pkglist_fn}
 
 sudo apt-get install -y ${pkgs_to_install[@]}
 
-# source ./git-bootstrap.sh
-# source ./emacs-bootstrap.sh
-# source ./global-bootstrap.sh
+source ./git-bootstrap.sh
+source ./emacs-bootstrap.sh
+source ./global-bootstrap.sh
