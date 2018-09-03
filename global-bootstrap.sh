@@ -11,7 +11,7 @@ CONFIGURE_OPTIONS=" \
 JNUM="2"
 
 function do_checkenv {
-    sudo apt-get install -y build-essential ctags
+    sudo apt-get install -y build-essential ctags libtool-bin
 }
 
 function do_fetch {
