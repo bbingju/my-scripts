@@ -2,28 +2,27 @@
 
 function get_lsb_version() {
     unset IFS
-    local _str=(`lsb_release -r`)
-    echo ${_str[1]}
+    local _ver=(`lsb_release -rs`)
+    echo ${_ver}
 }
 
 function get_lsb_version_major() {
     unset IFS
-    local _ver=$(get_lsb_version)
+    local _ver=$(`lsb_release -rs`)
     IFS='.'; local _arr=($_ver)
     echo ${_arr[0]}
 }
 
 function get_lsb_version_minor() {
     unset IFS
-    local _ver=$(get_lsb_version)
+    local _ver=$(`lsb_release -rs`)
     IFS="."; local _arr=($_ver)
     echo ${_arr[1]}
 }
 
 function get_lsb_codename() {
     unset IFS
-    local _str=(`lsb_release -c`)
-    local _codename=(${_str[1]})
+    local _codename=(`lsb_release -cs`)
     echo $_codename
 }
 
