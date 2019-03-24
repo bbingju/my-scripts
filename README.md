@@ -1,4 +1,4 @@
-```
+```sh
 wget https://raw.githubusercontent.com/bbingju/my-scripts/master/git-bootstrap.sh
 chmod a+x git-bootstrap.sh
 ./git-bootstrap.sh
