@@ -17,7 +17,7 @@ libmagickcore-dev \
 libxpm-dev \
 libgif-dev \
 libgnutls28-dev \
-libncurses5-dev
+libncurses5-dev \
 "
 
 function do_checkenv {
