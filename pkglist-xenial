@@ -5,5 +5,5 @@ pkgs_to_install=(build-essential \
 		     exuberant-ctags \
 		     silversearcher-ag \
 		     libncurses5-dev \
-		     libtool \
+		     libtool-bin \
 		)
