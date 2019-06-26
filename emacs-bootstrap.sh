@@ -2,7 +2,7 @@
 
 VERSION="26.2"
 FILENAME="emacs-${VERSION}.tar.xz"
-SRC_URI=http://ftpmirror.gnu.org/emacs/"${FILENAME}"
+SRC_URI=http://ftp.kaist.ac.kr/gnu/emacs/"${FILENAME}"
 JNUM="4"
 
 #--without-toolkit-scroll-bars
@@ -11,6 +11,7 @@ CONFIGURE_OPTIONS="
 "
 
 DEP_PACKAGES=" \
+pkg-config \
 libgnutls28-dev \
 libncurses5-dev \
 "
@@ -42,11 +43,6 @@ function do_configure {
     if [ "$USE_GUI" = "YES" ]; then
 	CONFIGURE_OPTIONS+=$GUI_CONFIGURE_OPTIONS
 	DEP_PACKAGES+=$GUI_DEP_PACKAGES
-    fi
-
-    # exception on the Bionic
-    if [ `lsb_release -cs` = "bionic" ]; then
-	CONFIGURE_OPTIONS+='--with-gnutls=no'
     fi
 
     autoreconf -fi -I m4
