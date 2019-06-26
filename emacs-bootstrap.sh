@@ -44,6 +44,13 @@ function do_configure {
 	DEP_PACKAGES+=$GUI_DEP_PACKAGES
     fi
 
+    # exception on the Bionic
+    if [ `lsb_release -cs` = "bionic" ]; then
+	CONFIGURE_OPTIONS+='--with-gnutls=no'
+    fi
+
+    autoreconf -fi -I m4
+    ./autogen.sh
     ./configure $CONFIGURE_OPTIONS
 }
 
@@ -82,9 +89,6 @@ case $key in
 esac
 done
 set -- "${POSITIONAL[@]}" # restore positional parameters
-
-echo USE GUI = "${USE_GUI}"
-echo POSITIONAL = "${POSITIONAL}"
 
 if [[ -n $1 ]]; then
     echo "Last line of file specified as non-opt/last argument:"
