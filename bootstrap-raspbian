@@ -1,0 +1,29 @@
+#!/bin/bash
+
+function get_lsb_codename() {
+    unset IFS
+    local _codename=(`lsb_release -cs`)
+    echo $_codename
+}
+
+set -e
+
+echo "export TERM=xterm-256color" >> ~/.bashrc
+
+sudo sed 's/raspbian.raspberrypi.org/ftp.kaist.ac.kr\/raspbian/' -i /etc/apt/sources.list
+sudo apt update
+
+pkglist_fn="pkglist-$(get_lsb_codename)"
+
+if [ ! -f ./${pkglist_fn} ]; then
+    echo "error: can not find the pkglist file."
+    exit -1
+fi
+
+source ./${pkglist_fn}
+
+sudo apt-get install -y ${pkgs_to_install[@]}
+
+source ./git-bootstrap.sh
+source ./emacs-bootstrap.sh
+source ./global-bootstrap.sh
