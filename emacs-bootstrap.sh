@@ -10,6 +10,12 @@ CONFIGURE_OPTIONS="
 	--prefix=${HOME}/.local \
 "
 
+WITHOUT_GUI_CONFIGURE_OPTIONS=('--without-xpm
+				--without-jpeg
+				--without-tiff
+				--without-gif
+				--without-png' )
+
 DEP_PACKAGES=" \
 pkg-config \
 libgnutls28-dev \
@@ -43,7 +49,11 @@ function do_configure {
     if [ "$USE_GUI" = "YES" ]; then
 	CONFIGURE_OPTIONS+=$GUI_CONFIGURE_OPTIONS
 	DEP_PACKAGES+=$GUI_DEP_PACKAGES
+    else
+	CONFIGURE_OPTIONS+=$WITHOUT_GUI_CONFIGURE_OPTIONS
     fi
+
+    echo $CONFIGURE_OPTIONS
 
     autoreconf -fi -I m4
     ./autogen.sh
