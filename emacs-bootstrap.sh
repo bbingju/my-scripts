@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="26.2"
+VERSION="26.3"
 FILENAME="emacs-${VERSION}.tar.xz"
 SRC_URI=http://ftp.kaist.ac.kr/gnu/emacs/"${FILENAME}"
 JNUM="4"
