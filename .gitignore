@@ -5,3 +5,5 @@
 emacs-*/
 global-*/
 git-*/
+
+.ccls-cache/
