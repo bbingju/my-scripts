@@ -2,7 +2,7 @@
 
 VERSION="26.3"
 FILENAME="emacs-${VERSION}.tar.xz"
-SRC_URI=http://ftp.kaist.ac.kr/gnu/emacs/"${FILENAME}"
+SRC_URI=http://mirror.kakao.com/gnu/emacs/"${FILENAME}"
 JNUM="4"
 
 #--without-toolkit-scroll-bars
