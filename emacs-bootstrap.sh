@@ -6,7 +6,7 @@ SRC_URI=http://mirror.kakao.com/gnu/emacs/"${FILENAME}"
 JNUM="4"
 
 #--without-toolkit-scroll-bars
-CONFIGURE_OPTIONS="
+USER_CONFIGURE_OPTIONS="
 	--prefix=${HOME}/.local \
 "
 
@@ -45,6 +45,10 @@ function do_configure {
 	exit "the configure is not found."
     fi
 
+    if [ "$IS_USER" = "YES" ]; then
+	CONFIGURE_OPTIONS+=$USER_CONFIGURE_OPTIONS
+    fi
+
     # check options & dependencies for GUI
     if [ "$USE_GUI" = "YES" ]; then
 	CONFIGURE_OPTIONS+=$GUI_CONFIGURE_OPTIONS
@@ -52,8 +56,6 @@ function do_configure {
     else
 	CONFIGURE_OPTIONS+=$WITHOUT_GUI_CONFIGURE_OPTIONS
     fi
-
-    echo $CONFIGURE_OPTIONS
 
     autoreconf -fi -I m4
     ./autogen.sh
@@ -69,12 +71,17 @@ function do_build {
 }
 
 function do_install {
-    make install
+    if [ "$IS_USER" = "NO" ]; then
+	make install
+    else
+	sudo make install
+    fi
 }
 
 set -e
 
-USE_GUI=NO # default
+USE_GUI=NO			# default
+IS_USER=NO			# default
 
 # Parse command-line arguments
 POSITIONAL=()
@@ -87,6 +94,10 @@ case $key in
 	USE_GUI=YES
 	shift # past argument
 #	shift # past value
+	;;
+	-u|--user)
+	    IS_USER=YES
+	    shift
 	;;
 	*)
 	POSITIONAL+=("$1")
