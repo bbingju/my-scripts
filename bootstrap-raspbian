@@ -10,8 +10,9 @@ set -e
 
 echo "export TERM=xterm-256color" >> ~/.bashrc
 
-sudo sed 's/raspbian.raspberrypi.org/ftp.kaist.ac.kr\/raspbian/' -i /etc/apt/sources.list
+sudo sed 's/raspbian.raspberrypi.org/ftp.lanet.kr\/raspbian/' -i /etc/apt/sources.list
 sudo apt update
+sudo apt upgrade -y
 
 pkglist_fn="pkglist-$(get_lsb_codename)"
 
