@@ -71,7 +71,7 @@ function do_build {
 }
 
 function do_install {
-    if [ "$IS_USER" = "NO" ]; then
+    if [ "$IS_USER" = "YES" ]; then
 	make install
     else
 	sudo make install
