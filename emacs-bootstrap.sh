@@ -10,7 +10,8 @@ USER_CONFIGURE_OPTIONS="
 	--prefix=${HOME}/.local \
 "
 
-WITHOUT_GUI_CONFIGURE_OPTIONS=('--without-xpm
+WITHOUT_GUI_CONFIGURE_OPTIONS=('--without-x
+				--without-xpm
 				--without-jpeg
 				--without-tiff
 				--without-gif
