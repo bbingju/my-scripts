@@ -1,8 +1,8 @@
 #!/bin/bash
 
-VERSION="26.3"
+VERSION="27.0.91"
 FILENAME="emacs-${VERSION}.tar.xz"
-SRC_URI=http://mirror.kakao.com/gnu/emacs/"${FILENAME}"
+SRC_URI=https://alpha.gnu.org/gnu/emacs/pretest/"${FILENAME}"
 JNUM="4"
 
 #--without-toolkit-scroll-bars
