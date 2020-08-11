@@ -1,8 +1,8 @@
 #!/bin/bash
 
-VERSION="27.0.91"
+VERSION="27.1"
 FILENAME="emacs-${VERSION}.tar.xz"
-SRC_URI=https://alpha.gnu.org/gnu/emacs/pretest/"${FILENAME}"
+SRC_URI=https://ftpmirror.gnu.org/emacs/"${FILENAME}"
 JNUM="4"
 
 #--without-toolkit-scroll-bars
