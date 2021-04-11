@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="27.1"
+VERSION="27.2"
 FILENAME="emacs-${VERSION}.tar.xz"
 SRC_URI=https://ftpmirror.gnu.org/emacs/"${FILENAME}"
 JNUM="4"
